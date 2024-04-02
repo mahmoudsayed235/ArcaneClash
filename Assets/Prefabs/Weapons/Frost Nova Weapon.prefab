@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6189808745750677067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.321, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7304104164928231792}
@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 7304104164928231792}
   - component: {fileID: 7304104164928231799}
   - component: {fileID: 8230674344532793917}
+  - component: {fileID: 3601009838331913714}
   m_Layer: 0
   m_Name: Frost Nova Weapon
   m_TagString: Untagged
@@ -128,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 7304104164928231796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2478439325386250418}
   m_Father: {fileID: 0}
@@ -142,7 +143,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7304104164928231796}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -161,3 +162,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBehaviour: {fileID: 11400000, guid: 091f4d53a9b8e984199ed6e2e0938740, type: 2}
   speed: 4
+--- !u!54 &3601009838331913714
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304104164928231796}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -18,12 +18,19 @@ public class LevelController : MonoBehaviour
     public int minGroupsPerWave = 1;
     public int maxGroupsPerWave = 5;
 
+    public int minEnemiesPerGroup = 1;
+    public int maxEnemiesPerGroup = 3;
+
     private int currentWaveNumber=1;
     private int currentDifficultyLevel = 1; // Set initial difficulty level
     bool isAlive = true;
     float timeBetweenWaves;
+    UIController uiController;
     void Start()
     {
+
+        uiController = GameObject.FindObjectOfType<UIController>();
+        uiController.UpdateWaveNumber(1);
         timeBetweenWaves = Mathf.Lerp(maxTimeBetweenWaves, minTimeBetweenWaves, (float)currentDifficultyLevel / 10f);
         StartCoroutine(CreatingFunction());
     }
@@ -66,7 +73,7 @@ public class LevelController : MonoBehaviour
     void SpawnEnemyGroup(List<Transform> availableSpawnPoints)
     {
         // Determine number of enemies in the group based on difficulty level
-        int numEnemies = currentDifficultyLevel * 2; // Adjust as needed based on your game's balance
+        int numEnemies = Random.Range(minEnemiesPerGroup, maxEnemiesPerGroup + 1) * currentDifficultyLevel;
 
         // Select enemy types for this difficulty level
         List<GameObject> availableEnemies = new List<GameObject>();
@@ -112,6 +119,8 @@ public class LevelController : MonoBehaviour
         {
             IncreaseDifficulty();
         }
+
+        uiController.UpdateWaveNumber(((currentDifficultyLevel-1)*5)+currentWaveNumber);
     }
 
     // You can call this method when you want to increase the difficulty level

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float health = 100f;
-    public float damageAmount = 2f;
+    [SerializeField]
+    float health = 100f;
+    [SerializeField]
+    float damageAmount = 2f;
+    UIController uiController;
 
     public void Damage(EnemyBehaviour enemyBehavior)
     {
@@ -26,18 +30,26 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             //GameOver
+            uiController.GameOver();
         }
+        else
+        {
+            uiController.UpdateHealthBar(health/100.0f);
+
+        }
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        uiController = GameObject.FindObjectOfType<UIController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

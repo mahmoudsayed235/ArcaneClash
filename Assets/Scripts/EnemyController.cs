@@ -7,14 +7,17 @@ public class EnemyController : MonoBehaviour
 
     public EnemyBehaviour enemyBehaviour;
     private int speed = 1;
+    [SerializeField]
     private int health = 100;
     private int damageAmount = 50;
     GameObject mainCamera;
     Animator animator;
+    bool speedChanged = false;
 
 
     public void Damage(WeaponBehaviour weaponBehavior)
     {
+        print("damage");
         switch (weaponBehavior.damage)
         {
             case RateWeapon.Low:
@@ -64,7 +67,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.name);
         if (other.name == "PlayerWall")
         {
 
@@ -93,8 +95,21 @@ public class EnemyController : MonoBehaviour
         }
 
     }
+    public void SlowDown()
+    {
+        if (!speedChanged)
+        {
+            speedChanged = !speedChanged;
+            speed /= 2;
+        }
+       // Invoke("BackToNormalSpeed", 2f);
+    }
+    public void BackToNormalSpeed()
+    {
 
-    
+        speed *= 2;
+    }
+
     void FixedUpdate()
     {
         transform.Translate(-1 * transform.forward * Time.deltaTime * speed);
