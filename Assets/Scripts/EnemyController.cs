@@ -13,11 +13,12 @@ public class EnemyController : MonoBehaviour
     GameObject mainCamera;
     Animator animator;
     bool speedChanged = false;
+    AudioSource audioSource;
+    public AudioClip damage, destroy, attack;
 
 
     public void Damage(WeaponBehaviour weaponBehavior)
     {
-        print("damage");
         switch (weaponBehavior.damage)
         {
             case RateWeapon.Low:
@@ -34,10 +35,18 @@ public class EnemyController : MonoBehaviour
         // Check if the enemy has been destroyed
         if (health <= 0)
         {
+
+            audioSource.PlayOneShot(destroy);
             Destroy(gameObject);
         }
-        //Create damage logic accoring to weapon's behaviour
+        else
+        {
+
+            audioSource.PlayOneShot(damage);
+        }
+
     }
+   
     public void Attack()
     {
 
@@ -60,7 +69,9 @@ public class EnemyController : MonoBehaviour
         }
 
 
-        
+
+        audioSource.clip = attack;
+        audioSource.Play();
         Destroy(this.gameObject);
 
     }
@@ -78,7 +89,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GameObject.FindGameObjectWithTag("SFX").GetComponent<AudioSource>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         animator=mainCamera.GetComponent<Animator>();
 

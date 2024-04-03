@@ -79,7 +79,7 @@ public class FireController : MonoBehaviour
             {
                 Attack1();
                 nextAttackTime1 = Time.time + (1f / weaponTypes[currentWeapon - 1].timeToFire);
-                print("nextAttackTime1 : "+(nextAttackTime1-Time.time));//.5
+                print("nextAttackTime1 : " + (nextAttackTime1 - Time.time));//.5
             }
         }
         else if (currentWeapon == 2)
@@ -87,7 +87,7 @@ public class FireController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextAttackTime2)
             {
                 Attack2();
-                nextAttackTime2 = Time.time +( 1f / weaponTypes[currentWeapon - 1].timeToFire);
+                nextAttackTime2 = Time.time + (1f / weaponTypes[currentWeapon - 1].timeToFire);
                 print("nextAttackTime2 : " + (nextAttackTime2 - Time.time));//1
             }
         }
@@ -96,7 +96,7 @@ public class FireController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextAttackTime3)
             {
                 Attack3();
-                nextAttackTime3 = Time.time +( 1f / weaponTypes[currentWeapon - 1].timeToFire);
+                nextAttackTime3 = Time.time + (1f / weaponTypes[currentWeapon - 1].timeToFire);
                 print("nextAttackTime3 : " + (nextAttackTime3 - Time.time));//2
             }
         }
@@ -104,18 +104,14 @@ public class FireController : MonoBehaviour
     void Attack1()
     {
         uiController.Reload1(0.5f);
-        // Perform attack 1 logic (e.g., instantiate projectile, deal damage, apply slowing effect)
-        Debug.Log("Attack 1 fired!");
-        Instantiate(weaponTypes[currentWeapon-1].weaponPrefab, this.transform.position, Quaternion.identity);
+        Instantiate(weaponTypes[currentWeapon - 1].weaponPrefab, this.transform.position, Quaternion.identity);
 
     }
     void Attack2()
     {
-
         uiController.Reload2(2.0f);
         Instantiate(weaponTypes[currentWeapon - 1].weaponPrefab, this.transform.position, Quaternion.identity);
         EnemyController[] enemies = GameObject.FindObjectsOfType<EnemyController>();
-
         // Loop through each enemy
         foreach (EnemyController enemy in enemies)
         {
@@ -123,18 +119,12 @@ public class FireController : MonoBehaviour
         }
 
 
-        // Perform attack 2 logic
-        Debug.Log("Attack 2 fired!");
     }
 
     void Attack3()
     {
 
         uiController.Reload3(1.0f);
-
-
         Instantiate(weaponTypes[currentWeapon - 1].weaponPrefab, this.transform.position, Quaternion.identity);
-        // Perform attack 3 logic
-        Debug.Log("Attack 3 fired!");
     }
 }

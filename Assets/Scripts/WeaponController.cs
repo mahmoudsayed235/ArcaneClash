@@ -14,7 +14,6 @@ public class WeaponController : MonoBehaviour
     {
         if (other.GetComponent<EnemyController>() != null)
         {
-            print("has enemy controller");
             if (!weaponBehaviour.slowsEnemySpeed)
             {
                 other.GetComponent<EnemyController>().Damage(weaponBehaviour);

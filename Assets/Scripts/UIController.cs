@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour
     public Image weapon3Icon;
     public GameObject pausePanel;
     public GameObject gameOverPanel;
+    public AudioSource sfxAudioSource;
+    public AudioClip gameOverClip;
 
 
     private bool isPaused = false;
@@ -65,6 +67,7 @@ public class UIController : MonoBehaviour
     }
     public void GameOver()
     {
+        sfxAudioSource.PlayOneShot(gameOverClip);
         healthBar.fillAmount = 0f;
         Time.timeScale = 0f;
 

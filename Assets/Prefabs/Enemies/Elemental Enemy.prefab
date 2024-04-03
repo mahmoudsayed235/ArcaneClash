@@ -148,6 +148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBehaviour: {fileID: 11400000, guid: 3e9fb8a16cdd57f41baa4cef1a712caa, type: 2}
   health: 100
+  damage: {fileID: 8300000, guid: 0a96a8de866870445833814fb02efa93, type: 3}
+  destroy: {fileID: 8300000, guid: e8f5610e51777d941bb6a028ff53c442, type: 3}
+  attack: {fileID: 8300000, guid: fbcea172a406cca44bc8383a0cd2a05f, type: 3}
 --- !u!65 &8142020131159034211
 BoxCollider:
   m_ObjectHideFlags: 0

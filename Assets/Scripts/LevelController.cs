@@ -53,8 +53,6 @@ public class LevelController : MonoBehaviour
     void StartNextWave()
     {
         int numGroups = CalculateNumGroups(); // Determine number of enemy groups for this wave
-        print("numGroups : "+ numGroups);
-
         List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints); // Create a list of available spawn points
 
         for (int i = 0; i < numGroups; i++)
